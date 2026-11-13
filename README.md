@@ -1,112 +1,55 @@
 # Simple Code Compare
 
-A small side-by-side comparison of a simple task — **summing numbers in a vector/list/array using an explicit loop** — in four languages:
+A living playground for comparing the **same high-level algorithm** across many programming languages.
 
-- Python
-- C
-- R
-- Rust
-
-## The Task
-
-Sum the integers `[1, 2, 3, 4, 5]` using a loop (not the built-in `sum` functions).
-
-## 1. Python
-
-```python
-numbers = [1, 2, 3, 4, 5]
-total = 0
-
-for num in numbers:
-    total += num
-
-print(total)   # 15
-```
-
-**Key points**
-- Dynamic typing, lists are heterogeneous by default.
-- `for ... in` iterates directly over the values.
-- Indentation defines the block (no braces).
-- Very concise and readable.
-
-## 2. C
-
-```c
-#include <stdio.h>
-
-int main(void) {
-    int numbers[] = {1, 2, 3, 4, 5};
-    int n = 5;                 // must track length yourself
-    int total = 0;
-
-    for (int i = 0; i < n; i++) {
-        total += numbers[i];
-    }
-
-    printf("%d\n", total);     // 15
-    return 0;
-}
-```
-
-**Key points**
-- Static typing, fixed-size arrays (or you manage length yourself).
-- Classic index-based `for` loop.
-- Manual memory/size management.
-- Braces `{}` and semicolons required.
-- Lowest-level and most verbose of the four.
-
-## 3. R
-
-```r
-numbers <- c(1, 2, 3, 4, 5)
-total <- 0
-
-for (num in numbers) {
-  total <- total + num
-}
-
-print(total)   # 15
-```
-
-**Key points**
-- Vector-oriented language; `c()` creates a vector.
-- Assignment is usually `<-` (though `=` also works).
-- `for (... in ...)` works, but R prefers vectorized operations (`sum(numbers)` is far more idiomatic).
-- Braces optional for single statements, but commonly used.
-
-## 4. Rust
-
-```rust
-fn main() {
-    let numbers = vec![1, 2, 3, 4, 5];
-    let mut total = 0;
-
-    for num in &numbers {      // borrow to avoid moving
-        total += num;
-    }
-
-    println!("{}", total);     // 15
-}
-```
-
-**Key points**
-- Strong static typing + ownership/borrowing system.
-- `vec![]` creates a growable vector on the heap.
-- `mut` is required to modify a variable.
-- Iterating with `&numbers` (or `.iter()`) borrows the data safely.
-- Extremely safe and performant, but has more ceremony than Python/R.
-
-## Quick Syntax Comparison
-
-| Feature              | Python          | C                     | R                | Rust                     |
-|----------------------|-----------------|-----------------------|------------------|--------------------------|
-| Container            | `list`          | C array               | vector (`c()`)   | `Vec<T>`                 |
-| Loop style           | `for x in xs`   | index-based `for`     | `for x in xs`    | `for x in &xs`           |
-| Mutable variable     | just assign     | normal                | normal           | must declare `mut`       |
-| Type declaration     | none            | explicit              | none             | inferred or explicit     |
-| Block delimiters     | indentation     | `{ }`                 | `{ }` (optional) | `{ }`                    |
-| Safety / performance | high-level      | manual, fast          | high-level       | memory-safe + fast       |
+The focus is on understanding the **algorithm first**, while the syntax details are handled with AI help.
 
 ---
 
-Created for a quick language comparison.
+## Current Languages & Folders
+
+| Folder     | Language      | What it contains                              | Category              |
+|------------|---------------|-----------------------------------------------|-----------------------|
+| `python/`  | Python        | Simple sum example                            | General / AI          |
+| `c/`       | C             | Simple sum example                            | Systems               |
+| `r/`       | R             | Simple sum example                            | Data / Statistics     |
+| `rust/`    | Rust          | Simple sum example                            | Systems / Safety      |
+| `mojo/`    | Mojo          | Simple sum example                            | High-performance AI   |
+| `go/`      | Go            | Simple sum example                            | Cloud / Infrastructure|
+| `zig/`     | Zig           | Simple sum example                            | Systems               |
+| `gleam/`   | Gleam         | Simple sum example                            | Functional / BEAM     |
+| `dart/`    | Dart          | Simple sum example                            | Apps (Flutter)        |
+| `prql/`    | PRQL + SQL    | Modern query language vs classic SQL          | Data Querying         |
+| `qiskit/`  | Qiskit + Python | Classical vs Quantum random example         | Quantum Computing     |
+
+---
+
+## The Common Task (most folders)
+
+**High-level algorithm:**
+1. Start with a list/vector of numbers
+2. Keep a running total
+3. Add each number one by one
+4. Show the final result
+
+This makes it easy to compare how the same thinking looks in different languages.
+
+---
+
+## Special Folders
+
+### `prql/`
+Compares a modern alternative to SQL (PRQL) with classic SQL.
+
+### `qiskit/`
+Shows the same idea (random 0/1) done classically in Python and with a quantum circuit using Qiskit.
+
+---
+
+## How to use this repository
+
+- Look at the **high-level algorithm** first
+- Then look at how each language expresses it
+- Use AI to help with syntax details when needed
+
+This repository is designed for interactive, algorithm-focused learning.
