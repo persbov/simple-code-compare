@@ -1,9 +1,40 @@
-# PRQL – Simple Sum Example
+# PRQL vs SQL – Simple Sum Example
 
-**High-level algorithm:**
-1. Start from a table (or list) of numbers
+**High-level algorithm (same in both):**
+1. Start from a table of numbers
 2. Add all the values together
 3. Show the total
 
-PRQL (Pipelined Relational Query Language) is a modern alternative to SQL.  
-It is designed to be clearer and more readable, while still compiling to normal SQL so it works with existing databases.
+---
+
+### PRQL version (`sum_list.prql`)
+
+```prql
+from numbers
+aggregate {
+  total = sum value
+}
+```
+
+---
+
+### Classic SQL version (`sum_list.sql`)
+
+```sql
+SELECT SUM(value) AS total
+FROM numbers;
+```
+
+---
+
+### Quick comparison
+
+| Aspect              | PRQL                              | SQL                          |
+|---------------------|-----------------------------------|------------------------------|
+| Style               | Pipeline (step by step)           | Nested / declarative         |
+| Readability         | Usually clearer for complex queries | Can become hard to read     |
+| Modern features     | Variables, functions, cleaner syntax | Limited                      |
+| Compatibility       | Compiles to SQL                   | Runs directly                |
+| Age                 | New (modern alternative)          | 50+ years old                |
+
+PRQL is designed to be a cleaner, more modern way to write the same kind of queries that SQL does.
