@@ -1,0 +1,7 @@
+# Simple sum of numbers in PRQL
+# Algorithm: take a list of numbers and add them all together
+
+from numbers
+aggregate {
+  total = sum value
+}
